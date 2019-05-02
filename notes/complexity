@@ -1,0 +1,47 @@
+Complexity of common algorithms:
+
+DFS, BFS - O(V+E)
+Dijsktra - O((V+E)logV)
+    (i) Depending on sparseness - O(ElogV) or O(VlogV)
+    (ii) Fibonacci heap - O(E + VlogV) - as decrease key operation takes O(1) 
+Bellman Ford: O(VE), It has to be iterated (V-1) times for E edges as the maximal length
+between any two nodes in a graph with V vertices is (V-1)
+
+Max Flow:
+1. Ford Fulkerson: O(|max_flow|*E)
+    Using BFS: O(VE^2), there are O(VE) bfs iterations required (Edmond Karp)
+    Dinic Algo: O(EV^2), better as most graphs are dense
+
+
+Quick sort Complexity:
+
+
+## Range Queries:
+
+All these data structures are used for solving different problems:
+
+Segment tree stores intervals, and optimized for "which of these intervals contains a given point" queries.
+Interval tree stores intervals as well, but optimized for "which of these intervals overlap with a given interval" queries. It can also be used for point queries - similar to segment tree.
+Range tree stores points, and optimized for "which points fall within a given interval" queries.
+Binary indexed tree stores items-count per index, and optimized for "how many items are there between index m and n" queries.
+Performance / Space consumption for one dimension:
+
+One Dimension
+k is the number of reported results
+
+|              | Segment       | Interval   | Range          | Indexed   |
+|--------------|--------------:|-----------:|---------------:|----------:|
+|Preprocessing |        n logn |     n logn |         n logn |    n logn |
+|Query         |        k+logn |     k+logn |         k+logn |      logn |
+|Space         |        n logn |          n |              n |         n |
+|              |               |            |                |           |
+|Insert/Delete |          logn |       logn |           logn |      logn |
+
+Higher Dimensions
+d > 1
+
+|              | Segment       | Interval   | Range          | Indexed   |
+|--------------|--------------:|-----------:|---------------:|----------:|
+|Preprocessing |     n(logn)^d |     n logn |      n(logn)^d | n(logn)^d |
+|Query         |    k+(logn)^d | k+(logn)^d |     k+(logn)^d |  (logn)^d |
+|Space         | n(logn)^(d-1) |     n logn | n(logn)^(d-1)) | n(logn)^d |
